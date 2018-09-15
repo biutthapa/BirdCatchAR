@@ -58,7 +58,14 @@ class ViewController: UIViewController {
 // MARK: - ARSKViewDelegate
 extension ViewController: ARSKViewDelegate {
     func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
-        return SKNode()
+        
+        if GameScene.gameState == .spwanBirds {
+            let bird = Bird()
+            bird.setup()
+            return bird
+        } else {
+            return SKNode()
+        }
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
